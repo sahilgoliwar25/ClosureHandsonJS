@@ -1,0 +1,12 @@
+body {
+  background-color: #d6c8fd;
+}
+h1 {
+  text-align: center;
+  text-decoration: underline;
+}
+pre {
+  background-color: #cb87f8;
+  width: max-content;
+  padding: 0.5em;
+}

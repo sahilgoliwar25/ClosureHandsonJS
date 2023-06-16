@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Closure Handson</title>
+  </head>
+  <body>
+    <h1>Closure Handson</h1>
+    <h2>
+      Q1.
+      <pre>
+function counter(){
+    var counter = 0;
+
+    function IncreaseCounter() {
+        return counter += 1;
+    };
+
+    return IncreaseCounter;
+}
+
+var counter = counter();
+alert(counter());
+alert(counter());
+alert(counter());
+alert(counter());</pre
+      >
+    </h2>
+    <button onClick="alertCounter()">Click here to see the Output</button>
+    <p>
+      In the above code, the outer function counter returns the reference of
+      inner function "IncreaseCounter()". IncreaseCounter increases the outer
+      variable counter to one and returns the counter. So everytime inner
+      function is called, counter value will be incremented by one.
+    </p>
+    <h2>
+      Q2.
+      <pre>
+let count = 0;
+(function () {
+  if (count === 0) {
+    let count = 1;
+    console.log(count); // What is logged?
+  }
+  console.log(count); // What is logged?
+})();</pre
+      >
+    </h2>
+    <button onClick="logCount()">
+      Click here to see the Output in Console
+    </button>
+    <h2>
+      Q3.
+      <pre>
+for (var i = 0; i &lt 3; i++) {
+  setTimeout(function log() {
+    console.log(i); // What is logged?
+  }, 1000);
+}</pre
+      >
+    </h2>
+    <button onClick="question3()">
+      Click here to see the Output in Console
+    </button>
+    <h2>
+      Q4. Write a code to calculate area of a rectangle using inner function. In
+      this case outer function should accept parameter length and inner function
+      should accept parameter breadth.
+    </h2>
+    <p>=></p>
+    <pre>
+function question4() {
+  function areaRectangle(length) {
+    function inner(breadth) {
+      return length * breadth;
+    }
+    return inner;
+  }
+  const area = areaRectangle(10);
+  const output = area(20);
+  console.log(output);
+}
+    </pre>
+    <button onClick="question4()">
+      Click here to see the Output in Console
+    </button>
+    <p>
+      In the above code, the outer function areaRectangle returns the reference
+      of inner function "inner()". length is passed as a parameter in outer
+      function whereas breadth is passed as a parameter in inner function. Inner
+      function multiplies length and breadth and returns the output.
+    </p>
+    <h2>
+      Q5. Take a variable in outer function and create an inner function to
+      increase the counter every time it is called
+    </h2>
+    <p>=></p>
+    <pre>
+function Counter() {
+    var counter = 0;
+
+    function IncreaseCounter() {
+      return (counter += 1);
+    }
+
+    return IncreaseCounter;
+  }
+
+  var counter = Counter();
+  alert(counter()); // 1
+  alert(counter()); // 2
+  alert(counter()); // 3
+  alert(counter()); // 4
+  alert(counter()); // 5</pre
+    >
+    <button onClick="question5()">Click here to see the Output</button>
+    <p>
+      In the above code, the outer function counter returns the reference of
+      inner function "IncreaseCounter()". Variable counter is declared in the
+      outer function. IncreaseCounter increases the outer variable counter to
+      one and returns the counter. So everytime inner function is called,
+      counter value will be incremented by one.
+    </p>
+    <h2>
+      Q6.
+      <pre>
+Print Output
+
+var a = 12;
+(function () {
+  alert(a);
+})();</pre
+      >
+      <button onClick="question6()">Click here to see the Output</button>
+      <p>
+        In the above example, the variable a is declared globally outside the
+        function. The inner function is making an alert to display the variable.
+      </p>
+    </h2>
+    <h2>
+      Q7.
+      <pre>
+var a = 10;
+var x = (function () {
+  var a = 12;
+  return function () {
+    alert(a);
+  };
+})();
+x();</pre
+      >
+    </h2>
+    <button onClick="question7()">Click here to see the Output</button>
+    <p>
+      In the above example, the variable a is declared globally outside the
+      function. But in the outer function, the variable is redeclared and
+      reinitialized. So The inner function is making an alert of the updated
+      value to display the variable.
+    </p>
+    <h2>
+      Q8.
+      <pre>
+var globalVar = "xyz" ;
+
+(function outerFunc(outerArg) {
+    var outerVar = 'a';
+    
+    (function innerFunc(innerArg) {
+    var innerVar = 'b';
+    
+    console.log(
+        "outerArg = " + outerArg + "\n" +
+        "innerArg = " + innerArg + "\n" +
+        "outerVar = " + outerVar + "\n" +
+        "innerVar = " + innerVar + "\n" +
+        "globalVar = " + globalVar);
+    
+    })(456);
+})(123);</pre
+      >
+    </h2>
+    <button onClick="question8()">
+      Click here to see the Output in Console
+    </button>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
